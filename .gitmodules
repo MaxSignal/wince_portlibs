@@ -17,3 +17,6 @@
 	path = tremor
 	url = https://gitlab.xiph.org/xiph/tremor.git
 	branch = lowmem
+[submodule "pixman"]
+	path = pixman
+	url = https://github.com/freedesktop/pixman.git
