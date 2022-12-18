@@ -1,0 +1,72 @@
+
+Libjpeg 6b, Windows CE port (compilation with cegcc)
+
+
+1) Licence
+
+See src/jpeg-6b-src/README
+
+
+2) URL of the original version
+
+http://gnuwin32.sourceforge.net/packages/jpeg.htm
+
+
+3) Version
+
+libjpeg 6b
+
+
+4) Dependencies
+
+None
+
+
+5) Maintainer
+
+Vincent Torri <vtorri at univ-evry dot fr>
+
+
+6) Source patch:
+
+see libjpeg-6b.diff in the patch/ sub directory
+
+To apply that patch:
+ * download the original version of libjpeg 6b
+ * copy libjpeg-6b.diff in src/jpeg/6b
+ * type : patch -p0 < libjpeg-6b.diff
+
+
+7) Compilation
+
+ * Version: svn 22-Jul-2008
+ * Architecture: mingw32ce
+ * CPPFLAGS: -D_WIN32_WCE=0x0400 -D_WIN32_IE=0x0400 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I../jpeg-6b
+ * CFLAGS: -O3 -Wall -mms-bitfields -fno-exceptions -fomit-frame-pointer
+ * LDFLAGS: --enable-auto-import -s
+
+ * Porting issues:
+  - jdmainct.c and jcmainct.c have been modified to remove warnings
+  - jconfig.h and jcmainct.c have been modified to fit the architecture
+
+
+8) Location of the cegcc source files
+
+in src/libjpeg-6b and in src/libjpeg-6b-src
+
+
+9) Creation of the binary version
+
+ * Go to the release/ subdirectory
+ * To create the binaries and development files, type
+
+  make
+
+ * To clean all files, type
+
+  make clean
+
+ * names of the generated files:
+
+  binary files: libjpeg-6b-bin.tar.bz2
+  development files: libjpeg-6b-dev.tar.bz2
