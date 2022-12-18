@@ -1,0 +1,138 @@
+diff -ur ../freetype-2.3.7.orig/builds/unix/ltmain.sh ./builds/unix/ltmain.sh
+--- ../freetype-2.3.7.orig/builds/unix/ltmain.sh	2008-06-29 09:46:29.000000000 +0200
++++ ./builds/unix/ltmain.sh	2008-10-18 09:15:22.000000000 +0200
+@@ -2559,7 +2559,7 @@
+     ;;
+   *ar\ archive*) # could be an import, or static
+     if eval $OBJDUMP -f $1 | $SED -e '10q' 2>/dev/null |
+-       $EGREP 'file format pe-i386(.*architecture: i386)?' >/dev/null ; then
++       $EGREP 'file format (pe-i386(.*architecture: i386)?|pe-arm-wince)' >/dev/null ; then
+       win32_nmres=`eval $NM -f posix -A $1 |
+ 	$SED -n -e '
+ 	    1,100{
+diff -ur ../freetype-2.3.7.orig/include/freetype/config/ftoption.h ./include/freetype/config/ftoption.h
+--- ../freetype-2.3.7.orig/include/freetype/config/ftoption.h	2008-02-16 06:53:25.000000000 +0100
++++ ./include/freetype/config/ftoption.h	2008-10-18 10:27:34.000000000 +0200
+@@ -206,6 +206,32 @@
+   /*                                                                       */
+ /* #define  FT_EXPORT(x)       extern x */
+ /* #define  FT_EXPORT_DEF(x)   x */
++#ifndef __GNUC__
++# define __DLL_IMPORT__  __declspec(dllimport)
++# define __DLL_EXPORT__  __declspec(dllexport)
++#else
++# define __DLL_IMPORT__  __attribute__((dllimport)) extern
++# define __DLL_EXPORT__  __attribute__((dllexport)) extern
++#endif
++
++#if (defined __WIN32__) || (defined _WIN32)
++# ifdef BUILD_FREETYPE2_DLL
++#  define FREETYPE2_DLL_IMPEXP     __DLL_EXPORT__
++# elif defined(FREETYPE2_STATIC)
++#  define FREETYPE2_DLL_IMPEXP
++# elif defined (USE_FREETYPE2_DLL)
++#  define FREETYPE2_DLL_IMPEXP     __DLL_IMPORT__
++# elif defined (USE_FREETYPE2_STATIC)
++#  define FREETYPE2_DLL_IMPEXP
++# else /* assume USE_FREETYPE2_DLL */
++#  define FREETYPE2_DLL_IMPEXP     __DLL_IMPORT__
++# endif
++#else /* __WIN32__ */
++# define FREETYPE2_DLL_IMPEXP
++#endif
++
++#define FT_EXPORT(x)    FREETYPE2_DLL_IMPEXP x
++#define FT_BASE(x)      FREETYPE2_DLL_IMPEXP x
+ 
+ 
+   /*************************************************************************/
+@@ -649,7 +675,7 @@
+    * is recommended to disable the macro since it reduces the library's code
+    * size and activates a few memory-saving optimizations as well.
+    */
+-#define FT_CONFIG_OPTION_OLD_INTERNALS
++/* #define FT_CONFIG_OPTION_OLD_INTERNALS */
+ 
+ 
+   /*
+diff -ur ../freetype-2.3.7.orig/modules.cfg ./modules.cfg
+--- ../freetype-2.3.7.orig/modules.cfg	2007-07-16 22:08:54.000000000 +0200
++++ ./modules.cfg	2008-10-18 10:31:06.000000000 +0200
+@@ -110,7 +110,7 @@
+ AUX_MODULES += cache
+ 
+ # TrueType GX/AAT table validation.  Needs ftgxval.c below.
+-# AUX_MODULES += gxvalid
++AUX_MODULES += gxvalid
+ 
+ # Support for streams compressed with gzip (files with suffix .gz).
+ #
+@@ -124,7 +124,7 @@
+ 
+ # OpenType table validation.  Needs ftotval.c below.
+ #
+-# AUX_MODULES += otvalid
++AUX_MODULES += otvalid
+ 
+ # Auxiliary PostScript driver component to share common code.
+ #
+diff -ur ../freetype-2.3.7.orig/src/base/ftlcdfil.c ./src/base/ftlcdfil.c
+--- ../freetype-2.3.7.orig/src/base/ftlcdfil.c	2008-01-18 05:19:35.000000000 +0100
++++ ./src/base/ftlcdfil.c	2008-10-18 10:30:10.000000000 +0200
+@@ -266,7 +266,7 @@
+ #endif /* USE_LEGACY */
+ 
+ 
+-  FT_EXPORT( FT_Error )
++  FT_EXPORT_DEF( FT_Error )
+   FT_Library_SetLcdFilter( FT_Library     library,
+                            FT_LcdFilter   filter )
+   {
+@@ -335,7 +335,7 @@
+ 
+ #else /* !FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
+ 
+-  FT_EXPORT( FT_Error )
++  FT_EXPORT_DEF( FT_Error )
+   FT_Library_SetLcdFilter( FT_Library    library,
+                            FT_LcdFilter  filter )
+   {
+diff -ur ../freetype-2.3.7.orig/src/base/ftotval.c ./src/base/ftotval.c
+--- ../freetype-2.3.7.orig/src/base/ftotval.c	2006-06-25 08:05:15.000000000 +0200
++++ ./src/base/ftotval.c	2008-10-18 10:31:26.000000000 +0200
+@@ -18,6 +18,7 @@
+ #include <ft2build.h>
+ #include FT_INTERNAL_OBJECTS_H
+ #include FT_SERVICE_OPENTYPE_VALIDATE_H
++#include FT_OPENTYPE_VALIDATE_H
+ 
+ 
+   /* documentation is in ftotval.h */
+diff -ur ../freetype-2.3.7.orig/src/base/ftsynth.c ./src/base/ftsynth.c
+--- ../freetype-2.3.7.orig/src/base/ftsynth.c	2006-11-07 10:38:57.000000000 +0100
++++ ./src/base/ftsynth.c	2008-10-21 10:04:11.000000000 +0200
+@@ -108,7 +108,7 @@
+ 
+     /* some reasonable strength */
+     xstr = FT_MulFix( face->units_per_EM,
+-                      face->size->metrics.y_scale ) / 24;
++                      face->size->metrics.y_scale ) / 35;
+     ystr = xstr;
+ 
+     if ( slot->format == FT_GLYPH_FORMAT_OUTLINE )
+Seulement dans ./src/base: ftsynth.c~
+diff -ur ../freetype-2.3.7.orig/src/psaux/psobjs.c ./src/psaux/psobjs.c
+--- ../freetype-2.3.7.orig/src/psaux/psobjs.c	2008-06-24 07:39:34.000000000 +0200
++++ ./src/psaux/psobjs.c	2008-10-18 10:32:25.000000000 +0200
+@@ -175,6 +175,11 @@
+       return PSaux_Err_Invalid_Argument;
+     }
+ 
++    if ( length < 0 ) {
++      FT_ERROR(( "ps_table_add: invalid length\n" ));
++      return PSaux_Err_Invalid_Argument;
++    }
++
+     /* grow the base block if needed */
+     if ( table->cursor + length > table->capacity )
+     {

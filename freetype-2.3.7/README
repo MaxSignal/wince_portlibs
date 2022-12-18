@@ -1,0 +1,73 @@
+
+Freetype 2.3.7, Windows CE port (compilation with cegcc)
+
+
+1) Licence
+
+See src/freetype-2.3.7/docs
+
+
+2) URL of the original version
+
+http://www.freetype.org/
+
+
+3) Version
+
+freetype 2.3.7
+
+
+4) Dependencies
+
+None
+
+
+5) Maintainer
+
+Vincent Torri <vtorri at univ-evry dot fr>
+
+
+6) Source patch:
+
+see freetype-2.3.7.diff in the patch/ sub directory
+
+To apply that patch:
+ * download the original version of freetype-2.3.7
+ * copy freetype-2.3.7.diff in freetype-2.3.7/
+ * type : patch -p0 < freetype-2.3.7.diff
+
+
+7) Compilation
+
+ * Version: svn 22-Jul-2008
+ * Architecture: mingw32ce
+ * CPPFLAGS: -D_WIN32_WCE=0x0420 -DFT_CONFIG_OPTION_SYSTEM_ZLIB -DFT_CONFIG_CONFIG_H="<ftconfig.h>"
+ * CFLAGS: -O3 -fms-extensions -mms-bitfields -fno-exceptions -fomit-frame-pointer -ffast-math -pipe
+ * LDFLAGS="-Wl,--enable-auto-import -Wl,--force-exe-suffix -Wl,--enable-runtime-pseudo-reloc -Wl,--allow-multiple-definition -Wl,--enable-stdcall-fixup -Wl,-s"
+ * configure: ./configure --prefix=/opt/wince --host=arm-mingw32ce
+
+ * Porting issues:
+  - libtool does not create the shared lib because undefined references
+  - patch and build oprtions from GNUWin32 Freetype 2.3.5 package
+
+
+8) Location of the cegcc source files
+
+in src/freetype-2.3.7/
+
+
+9) Creation of the binary version
+
+ * Go to the release/ subdirectory
+ * To create the binaries and development files, type
+
+  make
+
+ * To clean all files, type
+
+  make clean
+
+ * names of the generated files:
+
+  binary files: freetype-2.3.7-bin.tar.bz2
+  development files: freetype-2.3.7-dev.tar.bz2

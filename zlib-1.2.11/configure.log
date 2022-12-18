@@ -1,0 +1,188 @@
+--------------------
+./configure --prefix=/home/cygwin/cegcc/arm-mingw32ce
+Mon May 23 15:15:06 JST 2022
+=== ztest12200.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c ztest12200.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest12200.c ===
+int foo() { return 0; }
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 ztest12200.c
+
+Checking for shared library support...
+=== ztest12200.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -w -c -O3 -fPIC ztest12200.c
+-O3 -fPIC -o ztest12200.so ztest12200.o
+./configure: line 380: -O3: command not found
+(exit code 127)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with /home/cygwin/cegcc/bin/arm-mingw32ce-gcc.
+
+=== ztest12200.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 ztest12200.c
+Checking for size_t... Yes.
+
+
+=== ztest12200.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest12200.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest12200.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest12200 ztest12200.c
+In file included from ztest12200.c:2:
+/home/cygwin/cegcc/arm-mingw32ce/include/errno.h:12:25: error: no include path in which to search for errno.h
+   12 | # include_next <errno.h>
+      |                         ^
+ztest12200.c: In function 'main':
+ztest12200.c:3:28: warning: implicit declaration of function 'strerror' [-Wimplicit-function-declaration]
+    3 | int main() { return strlen(strerror(errno)); }
+      |                            ^~~~~~~~
+ztest12200.c:3:37: error: 'errno' undeclared (first use in this function)
+    3 | int main() { return strlen(strerror(errno)); }
+      |                                     ^~~~~
+ztest12200.c:3:1: note: 'errno' is defined in header '<errno.h>'; did you forget to '#include <errno.h>'?
+    2 | #include <errno.h>
+  +++ |+#include <errno.h>
+    3 | int main() { return strlen(strerror(errno)); }
+ztest12200.c:3:37: note: each undeclared identifier is reported only once for each function it appears in
+    3 | int main() { return strlen(strerror(errno)); }
+      |                                     ^~~~~
+(exit code 1)
+Checking for strerror... No.
+
+=== ztest12200.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR ztest12200.c
+Checking for unistd.h... Yes.
+
+=== ztest12200.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR ztest12200.c
+Checking for stdarg.h... Yes.
+
+=== ztest12200.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR ztest12200.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest12200.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR -o ztest12200 ztest12200.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest12200.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR ztest12200.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest12200.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR ztest12200.c
+ztest12200.c:6:1: warning: visibility attribute not supported in this configuration; ignored [-Wattributes]
+    6 | }
+      | ^Checking for attribute(visibility) support... No.
+
+ALL = static all64
+AR = /home/cygwin/cegcc/bin/arm-mingw32ce-ar
+ARFLAGS = rc
+CC = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR
+CPP = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc -E
+EXE = .exe
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = /home/cygwin/cegcc/bin/arm-mingw32ce-ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /home/cygwin/cegcc/arm-mingw32ce
+sharedlibdir = ${libdir}
+uname = CYGWIN_NT-10.0-22000-WOW64
+--------------------
+
+

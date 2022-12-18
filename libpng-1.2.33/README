@@ -1,0 +1,72 @@
+
+Libpng 1.2.33, Windows CE port (compilation with cegcc)
+
+
+1) Licence
+
+See src/libpng-1.2.33/LICENCE
+
+
+2) URL of the original version
+
+http://www.libpng.org/pub/png/libpng.html
+
+
+3) Version
+
+libpng 1.2.33
+
+
+4) Dependencies
+
+zlib
+
+
+5) Maintainer
+
+Vincent Torri <vtorri at univ-evry dot fr>
+
+
+6) Source patch:
+
+see libpng-1.2.33.diff in the patch/ sub directory
+
+To apply that patch:
+ * download the original version of libpng-1.2.33
+ * copy libpng-1.2.33.diff in libpng-1.2.33/
+ * type : patch -p0 < libpng-1.2.33.diff
+
+
+7) Compilation
+
+ * Version: svn 22-Jul-2008
+ * Architecture: mingw32ce
+ * CPPFLAGS: -DPNG_NO_MMX_CODE -D_WIN32_WCE=0x0420
+ * CFLAGS: -O3 -mms-bitfields -pipe -fomit-frame-pointer
+ * LDFLAGS="-Wl,--enable-auto-import -Wl,-s"
+ * configure: ./configure --prefix=/opt/wince --host=arm-mingw32ce
+
+ * Porting issues:
+  - libtool does not create the shared lib because undefined references
+
+
+8) Location of the cegcc source files
+
+in src/libpng-1.2.33/
+
+
+9) Creation of the binary version
+
+ * Go to the release/ subdirectory
+ * To create the binaries and development files, type
+
+  make
+
+ * To clean all files, type
+
+  make clean
+
+ * names of the generated files:
+
+  binary files: libpng-1.2.33-bin.tar.bz2
+  development files: libpng-1.2.33-dev.tar.bz2
