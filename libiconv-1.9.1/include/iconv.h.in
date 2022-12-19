@@ -56,7 +56,9 @@ int errno=0;
    have EILSEQ in a different header.  On these systems, define EILSEQ
    ourselves. */
 #ifndef EILSEQ
-#define EILSEQ @EILSEQ@
+#define EILSEQ 0
+#define EINVAL 0
+#define E2BIG  0
 #endif
 
 
