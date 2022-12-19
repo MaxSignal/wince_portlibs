@@ -1,5 +1,6 @@
 #!/bin/sh
 
+chmod +x *
 
 ## Zlib
 echo "BUILDING ZLIB..."
