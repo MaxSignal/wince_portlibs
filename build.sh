@@ -10,7 +10,7 @@ cd ../
 ## Expat
 echo "BUILDING EXPAT..."
 cd expat-2.2.9
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
 
@@ -22,7 +22,7 @@ cd freetype-2.3.7/src/freetype-2.3.7
             CPPFLAGS="-D_WIN32_WCE=0x0420 -DFT_CONFIG_OPTION_SYSTEM_ZLIB -DFT_CONFIG_CONFIG_H=\"<ftconfig.h>\"" \
             LDFLAGS="-Wl,--enable-auto-import -Wl,--force-exe-suffix -Wl,--enable-runtime-pseudo-reloc -Wl,--allow-multiple-definition -Wl,--enable-stdcall-fixup -Wl,-s"
 make && make install
-cd ../
+cd ../../../
 
 ## Jpeg
 echo "BUILDING JPEG..."
@@ -32,7 +32,7 @@ cd jpeg-6b-src/src/jpeg-6b-src
             CPPFLAGS="-D_WIN32_WCE=0x0400 -D_WIN32_IE=0x0400 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I../" \
             LDFLAGS="--enable-auto-import -s"
 make && make install
-cd ../
+cd ../../../
 
 ## Iconv
 echo "BUILDING ICONV..."
@@ -63,7 +63,7 @@ cd libpng-1.2.33/src/libpng-1.2.33
             CPPFLAGS="-DPNG_NO_MMX_CODE -D_WIN32_WCE=0x0420" \
             LDFLAGS="-Wl,--enable-auto-import -Wl,-s"
 make && make install
-cd ../
+cd ../../../
 
 ## Vorbis
 echo "BUILDING VORBIS..."
