@@ -61,7 +61,7 @@ CC = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc
 CCAS = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc
 CCASFLAGS = -g -O2
 CCDEPMODE = depmode=gcc3
-CFLAGS = -Wall -g -O -fforce-mem -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce
+CFLAGS = -Wall -g -O -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce
 CPP = /home/cygwin/cegcc/bin/arm-mingw32ce-gcc -E
 CPPFLAGS =  -mno-cygwin
 CXX = /home/cygwin/cegcc/bin/arm-mingw32ce-g++

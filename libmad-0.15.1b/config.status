@@ -513,7 +513,7 @@ s,@host_cpu@,arm,;t t
 s,@host_vendor@,unknown,;t t
 s,@host_os@,mingw32ce,;t t
 s,@CC@,/home/cygwin/cegcc/bin/arm-mingw32ce-gcc,;t t
-s,@CFLAGS@,-Wall -g -O -fforce-mem -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce,;t t
+s,@CFLAGS@,-Wall -g -O -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce,;t t
 s,@LDFLAGS@, -mno-cygwin,;t t
 s,@CPPFLAGS@, -mno-cygwin,;t t
 s,@ac_ct_CC@,,;t t
