@@ -16,7 +16,7 @@
 # To install in $HOME instead of /usr/local, use:
 #    make install prefix=$HOME
 
-CC=/home/cygwin/cegcc/bin/arm-mingw32ce-gcc
+CC=$(CEGCC)/bin/arm-mingw32ce-gcc
 
 CFLAGS=-O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR -DNO_ERRNO_H -D_WIN32_WCE
 #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -27,8 +27,8 @@ CFLAGS=-O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR -DNO_ERRNO_H -D_WIN32_WCE
 SFLAGS=-O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR
 LDFLAGS=
 TEST_LDFLAGS=-L. libz.a
-LDSHARED=/home/cygwin/cegcc/bin/arm-mingw32ce-gcc
-CPP=/home/cygwin/cegcc/bin/arm-mingw32ce-gcc -E
+LDSHARED=$(CEGCC)/bin/arm-mingw32ce-gcc
+CPP=$(CEGCC)/bin/arm-mingw32ce-gcc -E
 
 STATICLIB=libz.a
 SHAREDLIB=
@@ -36,16 +36,16 @@ SHAREDLIBV=
 SHAREDLIBM=
 LIBS=$(STATICLIB) $(SHAREDLIBV)
 
-AR=/home/cygwin/cegcc/bin/arm-mingw32ce-ar
+AR=$(CEGCC)/bin/arm-mingw32ce-ar
 ARFLAGS=rc
-RANLIB=/home/cygwin/cegcc/bin/arm-mingw32ce-ranlib
+RANLIB=$(CEGCC)/bin/arm-mingw32ce-ranlib
 LDCONFIG=ldconfig
 LDSHAREDLIBC=-lc
 TAR=tar
 SHELL=/bin/sh
 EXE=.exe
 
-prefix =/home/cygwin/cegcc/arm-mingw32ce
+prefix =$(CEGCC)/arm-mingw32ce
 exec_prefix =${prefix}
 libdir =${exec_prefix}/lib
 sharedlibdir =${libdir}
