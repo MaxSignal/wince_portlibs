@@ -28,6 +28,7 @@ cd freetype-2.3.7/src/freetype-2.3.7/builds/unix
             CPPFLAGS="-D_WIN32_WCE=0x0420 -DFT_CONFIG_OPTION_SYSTEM_ZLIB -DFT_CONFIG_CONFIG_H=\"<ftconfig.h>\"" \
             LDFLAGS="-Wl,--enable-auto-import -Wl,--force-exe-suffix -Wl,--enable-runtime-pseudo-reloc -Wl,--allow-multiple-definition -Wl,--enable-stdcall-fixup -Wl,-s"
 cd ../../
+mkdir objs
 make && make install
 cd ../../../
 
