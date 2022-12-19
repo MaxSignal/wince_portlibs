@@ -36,11 +36,6 @@ cd ../../../
 ## Jpeg
 echo "BUILDING JPEG..."
 cd jpeg-6b-src/src/jpeg-6b-src
-chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
-            CFLAGS="-O3 -Wall -mms-bitfields -fno-exceptions -fomit-frame-pointer" \
-            CPPFLAGS="-D_WIN32_WCE=0x0400 -D_WIN32_IE=0x0400 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I../" \
-            LDFLAGS="--enable-auto-import -s"
 make && make install
 cd ../../../
 

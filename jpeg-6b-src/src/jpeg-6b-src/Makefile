@@ -10,7 +10,7 @@
 #
 #   make install
 
-prefix = /opt/cegcc
+prefix = $(CEGCC)
 BIN_PATH = $(prefix)/bin
 INCLUDE_PATH = $(prefix)/include
 LIBRARY_PATH = $(prefix)/lib
@@ -25,7 +25,7 @@ TARGET = arm-mingw32ce
 
 CC = $(TARGET)-gcc$(EXE)
 CPPFLAGS = -D_WIN32_WCE=0x0400 -D_WIN32_IE=0x0400 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I../jpeg-6b
-CFLAGS = -O3 -Wall -mms-bitfields -fno-exceptions -fomit-frame-pointer
+CFLAGS = -O3 -Wall -mms-bitfields -fno-exceptions -fomit-frame-pointer 
 
 LD = $(CC)
 LDFLAGS = -Wl,--enable-auto-import -Wl,-s
@@ -61,7 +61,7 @@ DLIBOBJECTS= jdapimin.o jdapistd.o jdtrans.o jdatasrc.o \
 OBJS= $(CLIBOBJECTS) $(DLIBOBJECTS) $(COMOBJECTS)
 DLL_OBJS= $(OBJS) ../jpeg-6b/res/jpeg-dllversion.o
 
-all: clean $(STATICLIB) $(SHAREDLIB) $(IMPLIB)
+all: clean $(STATICLIB)
 
 .c.o:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
@@ -94,8 +94,9 @@ install: ../jpeg-6b/jconfig.h jerror.h jmorecfg.h jpeglib.h jpeg-6b/jpeg.def $(S
 	-$(INSTALL) jpeglib.h $(INCLUDE_PATH)
 	-$(INSTALL) ../jpeg-6b/jpeg.def $(LIBRARY_PATH)
 	-$(INSTALL) $(STATICLIB) $(LIBRARY_PATH)
-	-$(INSTALL) $(IMPLIB) $(LIBRARY_PATH)
-	-$(INSTALL) $(SHAREDLIB) $(BIN_PATH)
+	
+# -$(INSTALL) $(IMPLIB) $(LIBRARY_PATH)
+# -$(INSTALL) $(SHAREDLIB) $(BIN_PATH)
 
 uninstall:
 	-$(RM) $(INCLUDE_PATH)/jconfig.h
@@ -104,8 +105,8 @@ uninstall:
 	-$(RM) $(INCLUDE_PATH)/jpeglib.h
 	-$(RM) $(LIBRARY_PATH)/jpeg.def
 	-$(RM) $(LIBRARY_PATH)/$(STATICLIB)
-	-$(RM) $(LIBRARY_PATH)/$(IMPLIB)
-	-$(RM) $(BIN_PATH)/$(SHAREDLIB)
+# -$(RM) $(LIBRARY_PATH)/$(IMPLIB)
+# -$(RM) $(BIN_PATH)/$(SHAREDLIB)
 
 clean:
 	-$(RM) $(STATICLIB)
