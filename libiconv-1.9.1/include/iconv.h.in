@@ -59,6 +59,7 @@ int errno=0;
 #define EILSEQ 0
 #define EINVAL 0
 #define E2BIG  0
+#define ENOMEM 0
 #endif
 
 
