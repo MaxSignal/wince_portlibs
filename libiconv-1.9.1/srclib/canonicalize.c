@@ -49,7 +49,12 @@
 
 // #include <errno.h>
 #ifndef _LIBC
-# define __set_errno(e) errno = (e)
+# define __set_errno(e) 0
+#define EILSEQ 0
+#define EINVAL 0
+#define E2BIG  0
+#define ENOMEM 0
+#define ENOENT 0
 # ifndef ENAMETOOLONG
 #  define ENAMETOOLONG EINVAL
 # endif
