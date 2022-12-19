@@ -30,7 +30,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          sudo apt-get install bison gperf libmpfr-dev libmpc-dev wget autoconf automake libtool unzip
+          sudo apt-get install bison gperf libmpfr-dev libmpc-dev wget autoconf automake libtool-bin unzip
           
       - name: Set up CeGCC
         run: |

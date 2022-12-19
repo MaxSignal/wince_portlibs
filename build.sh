@@ -114,6 +114,9 @@ chmod +x configure
 make && make install
 cd ../
 
+## set PATH to sdl-config
+export PATH=$PATH:$CEGCC/arm-mingw32ce/bin/sdl-config
+
 ## SDL_mixer
 echo "BUILDING SDL_MIXER..."
 cd SDL_mixer
