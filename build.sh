@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## add path to config
+export PATH=$PATH:$CEGCC/arm-mingw32ce/bin
+
 ## Zlib
 echo "BUILDING ZLIB..."
 cd zlib-1.2.11
@@ -101,8 +104,7 @@ cd ../
 echo "BUILDING TREMOR..."
 cd tremor
 chmod +x autogen.sh
-./autogen.sh
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
+./autogen.sh --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
 
@@ -113,9 +115,6 @@ chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
-
-## set PATH to sdl-config
-export PATH=$PATH:$CEGCC/arm-mingw32ce/bin/sdl-config
 
 ## SDL_mixer
 echo "BUILDING SDL_MIXER..."
