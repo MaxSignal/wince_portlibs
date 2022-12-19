@@ -165,7 +165,7 @@ static int convert (iconv_t cd, FILE* infile, const char* infilename)
               int saved_errno = errno;
               fprintf(stderr,_("iconv: %s: "),infilename);
               errno = saved_errno;
-              perror("");
+              puts("");
             }
             return 1;
           }
@@ -204,7 +204,7 @@ static int convert (iconv_t cd, FILE* infile, const char* infilename)
           int saved_errno = errno;
           fprintf(stderr,_("iconv: %s: "),infilename);
           errno = saved_errno;
-          perror("");
+          puts("");
         }
         return 1;
       }
@@ -323,7 +323,7 @@ int main (int argc, char* argv[])
           int saved_errno = errno;
           fprintf(stderr,_("iconv: %s: "),infilename);
           errno = saved_errno;
-          perror("");
+          puts("");
           status = 1;
         } else {
           status |= convert(cd,infile,infilename);

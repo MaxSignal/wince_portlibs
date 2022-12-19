@@ -41,7 +41,7 @@ int main (int argc, char* argv[])
 
   cd = iconv_open(charset,"UCS-4-INTERNAL");
   if (cd == (iconv_t)(-1)) {
-    perror("iconv_open");
+    puts("iconv_open");
     exit(1);
   }
 
@@ -69,7 +69,7 @@ int main (int argc, char* argv[])
           int saved_errno = errno;
           fprintf(stderr,"0x%02X: iconv error: ",i);
           errno = saved_errno;
-          perror("");
+          puts("");
           exit(1);
         }
       } else if (result == 0) /* ignore conversions with transliteration */ {
@@ -88,7 +88,7 @@ int main (int argc, char* argv[])
   }
 
   if (iconv_close(cd) < 0) {
-    perror("iconv_close");
+    puts("iconv_close");
     exit(1);
   }
 
