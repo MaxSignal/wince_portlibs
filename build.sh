@@ -143,5 +143,14 @@ chmod +x configure
 make && make install
 cd ../
 
+## SDL_mpeg
+echo "BUILDING SDL_MPEG..."
+cd smpeg
+chmod +x autogen.sh
+./autogen.sh
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
+make && make install
+cd ../
+
 ## End
 echo "Complete!"

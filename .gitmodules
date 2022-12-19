@@ -16,3 +16,7 @@
 [submodule "pixman"]
 	path = pixman
 	url = https://github.com/MaxSignal/pixman.git
+[submodule "smpeg"]
+	path = smpeg
+	url = https://github.com/icculus/smpeg.git
+	branch = SDL-1.2
