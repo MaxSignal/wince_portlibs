@@ -40,6 +40,8 @@ jobs:
           
       - name: Build Libs
         run: |
+          export CEGCC=/opt/cegcc
+          export PATH=$PATH:$CEGCC/bin
           ./build.sh
       
 #       - name: Init upload artifact
