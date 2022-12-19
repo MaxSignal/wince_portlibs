@@ -85,7 +85,7 @@ $(SHAREDLIB): ../jpeg-6b/jpeg.def $(DLL_OBJS)
 
 .PHONY: install uninstall clean
 
-install: ../jpeg-6b/jconfig.h jerror.h jmorecfg.h jpeglib.h jpeg-6b/jpeg.def $(STATICLIB) $(IMPLIB) $(SHAREDLIB)
+install: ../jpeg-6b/jconfig.h jerror.h jmorecfg.h jpeglib.h ../jpeg-6b/jpeg.def $(STATICLIB)
 	-@if not exist $(INCLUDE_PATH)/nul mkdir $(INCLUDE_PATH)
 	-@if not exist $(LIBRARY_PATH)/nul mkdir $(LIBRARY_PATH)
 	-$(INSTALL) ../jpeg-6b/jconfig.h $(INCLUDE_PATH)
