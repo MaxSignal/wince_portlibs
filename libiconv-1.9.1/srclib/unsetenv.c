@@ -20,12 +20,14 @@
 # include <config.h>
 #endif
 
+#define EINVAL 0
+
 // #include <errno.h>
 #if !_LIBC
 # if !defined errno && !defined HAVE_ERRNO_DECL
 extern int errno;
 # endif
-# define __set_errno(ev) ((errno) = (ev))
+# define __set_errno(ev) 0
 #endif
 
 #if _LIBC || HAVE_STDLIB_H
