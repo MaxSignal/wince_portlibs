@@ -1,0 +1,50 @@
+mdct.lo: mdct.c ivorbiscodec.h ogg.h os_types.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/sys/types.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/_mingw.h \
+ /Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stddef.h \
+ config_types.h os.h /Users/admin/cegcc/arm-mingw32ce/include/math.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/malloc.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/stdlib.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/stdio.h \
+ /Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stdarg.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/memory.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/string.h misc.h asm_arm.h \
+ mdct.h mdct_lookup.h
+
+ivorbiscodec.h:
+
+ogg.h:
+
+os_types.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/sys/types.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/_mingw.h:
+
+/Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stddef.h:
+
+config_types.h:
+
+os.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/math.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/malloc.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/stdlib.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/stdio.h:
+
+/Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stdarg.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/memory.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/string.h:
+
+misc.h:
+
+asm_arm.h:
+
+mdct.h:
+
+mdct_lookup.h:

@@ -1,0 +1,53 @@
+vorbisfile.lo: vorbisfile.c \
+ /Users/admin/cegcc/arm-mingw32ce/include/stdlib.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/_mingw.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/stdio.h \
+ /Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stddef.h \
+ /Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stdarg.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/string.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/math.h codec_internal.h \
+ codebook.h ogg.h os_types.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/sys/types.h config_types.h \
+ ivorbiscodec.h ivorbisfile.h os.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/malloc.h \
+ /Users/admin/cegcc/arm-mingw32ce/include/memory.h misc.h asm_arm.h
+
+/Users/admin/cegcc/arm-mingw32ce/include/stdlib.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/_mingw.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/stdio.h:
+
+/Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stddef.h:
+
+/Users/admin/cegcc/lib/gcc/arm-mingw32ce/9.3.0/include/stdarg.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/string.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/math.h:
+
+codec_internal.h:
+
+codebook.h:
+
+ogg.h:
+
+os_types.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/sys/types.h:
+
+config_types.h:
+
+ivorbiscodec.h:
+
+ivorbisfile.h:
+
+os.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/malloc.h:
+
+/Users/admin/cegcc/arm-mingw32ce/include/memory.h:
+
+misc.h:
+
+asm_arm.h:
