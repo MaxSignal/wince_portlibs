@@ -32,6 +32,10 @@
 #endif
 #include <fcntl.h>
 
+#define EILSEQ 0
+#define EINVAL 0
+#define E2BIG 0
+
 /* Ensure that iconv_no_i18n does not depend on libintl.  */
 #ifdef NO_I18N
 # undef ENABLE_NLS

@@ -22323,7 +22323,7 @@ echo "${ECHO_T}$ac_cv_decl_EILSEQ" >&6
   if test "$ac_cv_decl_EILSEQ" != yes; then
 
 cat >>confdefs.h <<_ACEOF
-#define EILSEQ $ac_cv_decl_EILSEQ
+#define EILSEQ 0
 _ACEOF
 
     EILSEQ="$ac_cv_decl_EILSEQ"
