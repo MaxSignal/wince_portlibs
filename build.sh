@@ -132,6 +132,7 @@ echo "BUILDING SDL_IMAGE..."
 cd SDL_image
 chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared 
+make && make install 
 cd ../
 
 ## SDL_ttf
