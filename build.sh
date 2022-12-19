@@ -2,6 +2,7 @@
 
 ## add path to config
 export PATH=$PATH:$CEGCC/arm-mingw32ce/bin
+export PKG_CONFIG_PATH=$CEGCC/arm-mingw32ce/lib/pkgconfig
 
 ## Zlib
 echo "BUILDING ZLIB..."
@@ -103,8 +104,8 @@ cd ../
 ## Tremor
 echo "BUILDING TREMOR..."
 cd tremor
-chmod +x autogen.sh
-./autogen.sh --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
+chmod +x configure
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
 
@@ -130,14 +131,14 @@ cd ../
 echo "BUILDING SDL_IMAGE..."
 cd SDL_image
 chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --includedir=$CEGCC/arm-mingw32ce/include --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared 
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared 
 cd ../
 
 ## SDL_ttf
 echo "BUILDING SDL_TTF..."
 cd SDL_ttf
 chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --includedir=$CEGCC/arm-mingw32ce/include --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
 make && make install
 cd ../
 
