@@ -47,7 +47,7 @@
 
 #include <sys/stat.h>
 
-#include <errno.h>
+// #include <errno.h>
 #ifndef _LIBC
 # define __set_errno(e) errno = (e)
 # ifndef ENAMETOOLONG

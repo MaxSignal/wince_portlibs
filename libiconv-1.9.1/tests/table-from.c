@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iconv.h>
-#include <errno.h>
+// #include <errno.h>
 
 /* If nonzero, ignore conversions outside Unicode plane 0. */
 static int bmp_only;

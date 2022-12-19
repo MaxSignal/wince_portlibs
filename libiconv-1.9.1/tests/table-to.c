@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iconv.h>
-#include <errno.h>
+// #include <errno.h>
 
 int main (int argc, char* argv[])
 {

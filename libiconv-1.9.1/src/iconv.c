@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iconv.h>
-#include <errno.h>
+// #include <errno.h>
 #if HAVE_LOCALE_H
 #include <locale.h>
 #endif

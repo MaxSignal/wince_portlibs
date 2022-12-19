@@ -21,7 +21,7 @@
 #endif
 #include <alloca.h>
 
-#include <errno.h>
+// #include <errno.h>
 #if !_LIBC
 # if !defined errno && !defined HAVE_ERRNO_DECL
 extern int errno;

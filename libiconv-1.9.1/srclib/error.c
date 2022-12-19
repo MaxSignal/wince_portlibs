@@ -81,7 +81,7 @@ unsigned int error_message_count;
 /* In the GNU C library, there is a predefined variable for this.  */
 
 # define program_name program_invocation_name
-# include <errno.h>
+// # include <errno.h>
 # include <libio/libioP.h>
 
 /* In GNU libc we want do not want to use the common name `error' directly.
