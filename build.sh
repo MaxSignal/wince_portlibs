@@ -36,8 +36,7 @@ cd ../../../
 ## Jpeg
 echo "BUILDING JPEG..."
 cd jpeg-6b-src/src/jpeg-6b-src
-make
-sudo make install
+make && make install
 cd ../../../
 
 ## Iconv

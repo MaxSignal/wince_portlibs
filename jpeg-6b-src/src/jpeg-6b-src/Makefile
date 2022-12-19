@@ -11,9 +11,9 @@
 #   make install
 
 prefix = $(CEGCC)
-BIN_PATH = $(CEGCC)/bin
-INCLUDE_PATH = $(CEGCC)/include
-LIBRARY_PATH = $(CEGCC)/lib
+BIN_PATH = $(prefix)/bin
+INCLUDE_PATH = $(prefix)/include
+LIBRARY_PATH = $(prefix)/lib
 
 STATICLIB = libjpeg.a
 SHAREDLIB = jpeg62.dll
@@ -86,14 +86,14 @@ $(SHAREDLIB): ../jpeg-6b/jpeg.def $(DLL_OBJS)
 .PHONY: install uninstall clean
 
 install: ../jpeg-6b/jconfig.h jerror.h jmorecfg.h jpeglib.h $(STATICLIB)
-	-$(INSTALL) ../jpeg-6b/jconfig.h $(INCLUDE_PATH)
-	-$(INSTALL) ./jerror.h $(INCLUDE_PATH)
-	-$(INSTALL) ./jmorecfg.h $(INCLUDE_PATH)
-	-$(INSTALL) ./jpeglib.h $(INCLUDE_PATH)
-	-$(INSTALL) ./$(STATICLIB) $(LIBRARY_PATH)
+	cp ../jpeg-6b/jconfig.h $(INCLUDE_PATH)
+	cp ./jerror.h $(INCLUDE_PATH)
+	cp ./jmorecfg.h $(INCLUDE_PATH)
+	cp ./jpeglib.h $(INCLUDE_PATH)
+	cp ./$(STATICLIB) $(LIBRARY_PATH)
 	
-# -$(INSTALL) $(IMPLIB) $(LIBRARY_PATH)
-# -$(INSTALL) $(SHAREDLIB) $(BIN_PATH)
+# cp $(IMPLIB) $(LIBRARY_PATH)
+# cp $(SHAREDLIB) $(BIN_PATH)
 
 uninstall:
 	-$(RM) $(INCLUDE_PATH)/jconfig.h
