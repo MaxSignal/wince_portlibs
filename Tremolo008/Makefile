@@ -3,23 +3,23 @@
 # $URL$
 # $Id$
 
-wince_gcc_root = /usr/local/wince/cross-tools
+wince_gcc_root = $(CEGCC)/arm-mingw32ce
 srcdir    = .
 VPATH     = $(srcdir)
 
-CC     = arm-wince-pe-gcc
-CXX    = arm-wince-pe-g++
-LD     = arm-wince-pe-g++
-AR     = arm-wince-pe-ar cru
-RANLIB = arm-wince-pe-ranlib
-STRIP  = arm-wince-pe-strip
-WINDRES= arm-wince-pe-windres
+CC     = arm-mingw32ce-gcc
+CXX    = arm-mingw32ce-g++
+LD     = arm-mingw32ce-g++
+AR     = arm-mingw32ce-ar cru
+RANLIB = arm-mingw32ce-ranlib
+STRIP  = arm-mingw32ce-strip
+WINDRES= arm-mingw32ce-windres
 MKDIR  = mkdir -p
 RM     = rm -f
 RM_REC = rm -rf
 ECHO   = echo -n
 CAT    = cat
-AS     = arm-wince-pe-as
+AS     = arm-mingw32ce-as
 
 DEFINES := 
 
@@ -66,16 +66,16 @@ EXEOBJS_LC := testtremor.olc
 	$(CC) $(CFLAGS) -c $(<) -o $*.olc -D_LOW_ACCURACY_ -DONLY_C
 
 all: libTremolo006.lib bittest.exe testtremor.exe testtremorC.exe testtremorL.exe testtremorLC.exe annotate.exe
-	cp libTremolo006.lib /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/lib/
-	cp ivorbisfile.h /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/include/tremolo006/tremor/
-	cp config_types.h /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/include/tremolo006/
-	cp ivorbiscodec.h /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/include/tremolo006/
-	cp ogg.h /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/include/tremolo006/
-	cp os_types.h /cygdrive/c/cvs/scummvm/trunk/backends/platform/wince/libs/include/tremolo006/
+	cp libTremolo006.lib $(CEGCC)/arm-mingw32ce/lib/
+	cp ivorbisfile.h $(CEGCC)/arm-mingw32ce/include/tremolo006/tremor/
+	cp config_types.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
+	cp ivorbiscodec.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
+	cp ogg.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
+	cp os_types.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
 
 libTremolo006.lib: $(LIBOBJS)
-	arm-wince-pe-ar cru $@ $^
-	arm-wince-pe-ranlib $@
+	arm-mingw32ce-ar cru $@ $^
+	arm-mingw32ce-ranlib $@
 
 bitwiseTEST.o: bitwise.c
 	$(CC) $(CFLAGS) -c -o bitwiseTEST.o bitwise.c -D_V_BIT_TEST
