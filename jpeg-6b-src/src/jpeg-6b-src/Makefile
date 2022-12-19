@@ -11,9 +11,9 @@
 #   make install
 
 prefix = $(CEGCC)
-BIN_PATH = $(prefix)/bin
-INCLUDE_PATH = $(prefix)/include
-LIBRARY_PATH = $(prefix)/lib
+BIN_PATH = $(CEGCC)/bin
+INCLUDE_PATH = $(CEGCC)/include
+LIBRARY_PATH = $(CEGCC)/lib
 
 STATICLIB = libjpeg.a
 SHAREDLIB = jpeg62.dll
