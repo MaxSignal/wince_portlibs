@@ -130,15 +130,14 @@ cd ../
 echo "BUILDING SDL_IMAGE..."
 cd SDL_image
 chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-png-shared --disable-jpeg-shared
-make && make install
+./configure --prefix=$CEGCC/arm-mingw32ce --includedir=$CEGCC/arm-mingw32ce/include --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared 
 cd ../
 
 ## SDL_ttf
 echo "BUILDING SDL_TTF..."
 cd SDL_ttf
 chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
+./configure --prefix=$CEGCC/arm-mingw32ce --includedir=$CEGCC/arm-mingw32ce/include --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
 make && make install
 cd ../
 
