@@ -39,13 +39,13 @@ cd jpeg-6b-src/src/jpeg-6b-src
 make && make install
 cd ../../../
 
-## Iconv
-echo "BUILDING ICONV..."
-cd libiconv-1.9.1
-chmod +x configure
-./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
-make && make install
-cd ../
+# ## Iconv
+# echo "BUILDING ICONV..."
+# cd libiconv-1.9.1
+# chmod +x configure
+# ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
+# make && make install
+# cd ../
 
 ## Mad
 echo "BUILDING MAD..."
