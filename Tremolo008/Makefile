@@ -65,15 +65,16 @@ EXEOBJS_LC := testtremor.olc
 .c.olc:
 	$(CC) $(CFLAGS) -c $(<) -o $*.olc -D_LOW_ACCURACY_ -DONLY_C
 
-all: libTremolo006.lib bittest.exe testtremor.exe testtremorC.exe testtremorL.exe testtremorLC.exe annotate.exe
-	cp libTremolo006.lib $(CEGCC)/arm-mingw32ce/lib/
-	cp ivorbisfile.h $(CEGCC)/arm-mingw32ce/include/tremolo006/tremor/
-	cp config_types.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
-	cp ivorbiscodec.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
-	cp ogg.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
-	cp os_types.h $(CEGCC)/arm-mingw32ce/include/tremolo006/
+all: libTremolo008.lib bittest.exe testtremor.exe testtremorC.exe testtremorL.exe testtremorLC.exe annotate.exe
+	mkdir -p $(CEGCC)/arm-mingw32ce/include/tremolo008/tremor/
+	cp libTremolo008.lib $(CEGCC)/arm-mingw32ce/lib/
+	cp ivorbisfile.h $(CEGCC)/arm-mingw32ce/include/tremolo008/tremor/
+	cp config_types.h $(CEGCC)/arm-mingw32ce/include/tremolo008/
+	cp ivorbiscodec.h $(CEGCC)/arm-mingw32ce/include/tremolo008/
+	cp ogg.h $(CEGCC)/arm-mingw32ce/include/tremolo008/
+	cp os_types.h $(CEGCC)/arm-mingw32ce/include/tremolo008/
 
-libTremolo006.lib: $(LIBOBJS)
+libTremolo008.lib: $(LIBOBJS)
 	arm-mingw32ce-ar cru $@ $^
 	arm-mingw32ce-ranlib $@
 
