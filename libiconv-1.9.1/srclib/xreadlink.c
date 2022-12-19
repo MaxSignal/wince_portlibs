@@ -29,7 +29,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <errno.h>
+// #include <errno.h>
 #ifndef errno
 extern int errno;
 #endif
