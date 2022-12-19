@@ -16,11 +16,18 @@ cd ../
 
 ## Freetype
 echo "BUILDING FREETYPE..."
-cd freetype-2.3.7/src/freetype-2.3.7
+cd freetype-2.3.7/src/freetype-2.3.7/builds/unix
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
+            CC=$CEGCC/bin/arm-mingw32ce-gcc CXX=$CEGCC/bin/arm-mingw32ce-g++ \
+            LD=$CEGCC/bin/arm-mingw32ce-ld AR=$CEGCC/bin/arm-mingw32ce-ar \
+            RANLIB=$CEGCC/bin/arm-mingw32ce-ranlib STRIP=$CEGCC/bin/arm-mingw32ce-strip \
+            WINDRES=$CEGCC/bin/arm-mingw32ce-windres AS=$CEGCC/bin/arm-mingw32ce-as \
+            DLLTOOL=$CEGCC/bin/arm-mingw32ce-dlltool OBJDUMP=$CEGCC/bin/arm-mingw32ce-objdump \
+            NM=$CEGCC/bin/arm-mingw32ce-nm \
             CFLAGS="-O3 -fms-extensions -mms-bitfields -fno-exceptions -fomit-frame-pointer -ffast-math -pipe" \
             CPPFLAGS="-D_WIN32_WCE=0x0420 -DFT_CONFIG_OPTION_SYSTEM_ZLIB -DFT_CONFIG_CONFIG_H=\"<ftconfig.h>\"" \
             LDFLAGS="-Wl,--enable-auto-import -Wl,--force-exe-suffix -Wl,--enable-runtime-pseudo-reloc -Wl,--allow-multiple-definition -Wl,--enable-stdcall-fixup -Wl,-s"
+cd ../../
 make && make install
 cd ../../../
 
