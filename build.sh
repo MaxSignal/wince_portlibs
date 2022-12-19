@@ -1,7 +1,5 @@
 #!/bin/sh
 
-chmod +x *
-
 ## Zlib
 echo "BUILDING ZLIB..."
 cd zlib-1.2.11
@@ -11,6 +9,7 @@ cd ../
 ## Expat
 echo "BUILDING EXPAT..."
 cd expat-2.2.9
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -18,6 +17,7 @@ cd ../
 ## Freetype
 echo "BUILDING FREETYPE..."
 cd freetype-2.3.7/src/freetype-2.3.7/builds/unix
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
             CC=$CEGCC/bin/arm-mingw32ce-gcc CXX=$CEGCC/bin/arm-mingw32ce-g++ \
             LD=$CEGCC/bin/arm-mingw32ce-ld AR=$CEGCC/bin/arm-mingw32ce-ar \
@@ -36,6 +36,7 @@ cd ../../../
 ## Jpeg
 echo "BUILDING JPEG..."
 cd jpeg-6b-src/src/jpeg-6b-src
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
             CFLAGS="-O3 -Wall -mms-bitfields -fno-exceptions -fomit-frame-pointer" \
             CPPFLAGS="-D_WIN32_WCE=0x0400 -D_WIN32_IE=0x0400 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I../" \
@@ -46,6 +47,7 @@ cd ../../../
 ## Iconv
 echo "BUILDING ICONV..."
 cd libiconv-1.9.1
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -53,6 +55,7 @@ cd ../
 ## Mad
 echo "BUILDING MAD..."
 cd libmad-0.15.1b
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -60,6 +63,7 @@ cd ../
 ## Ogg
 echo "BUILDING OGG..."
 cd libogg-1.3.4
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -67,6 +71,7 @@ cd ../
 ## Png
 echo "BUILDING PNG..."
 cd libpng-1.2.33/src/libpng-1.2.33
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
             CFLAGS="-O3 -mms-bitfields -pipe -fomit-frame-pointer" \
             CPPFLAGS="-DPNG_NO_MMX_CODE -D_WIN32_WCE=0x0420" \
@@ -77,6 +82,7 @@ cd ../../../
 ## Vorbis
 echo "BUILDING VORBIS..."
 cd libvorbis-1.3.6
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -84,6 +90,7 @@ cd ../
 ## Pixman
 echo "BUILDING PIXMAN..."
 cd pixman 
+chmod +x autogen.sh
 ./autogen.sh
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
@@ -98,6 +105,7 @@ cd ../
 ## Tremor
 echo "BUILDING TREMOR..."
 cd tremor
+chmod +x autogen.sh
 ./autogen.sh
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
@@ -106,6 +114,7 @@ cd ../
 ## SDL
 echo "BUILDING SDL..."
 cd SDL-1.2
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
 cd ../
@@ -113,6 +122,7 @@ cd ../
 ## SDL_mixer
 echo "BUILDING SDL_MIXER..."
 cd SDL_mixer
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared \
             --disable-music-midi --disable-music-timidity-midi --disable-music-native-midi --enable-music-ogg-tremor \
             --disable-music-ogg-shared --disable-music-ogg --disable-music-mp3 --disable-music-mp3-shared --disable-smpegtest --enable-music-mad-gpl
@@ -122,6 +132,7 @@ cd ../
 ## SDL_image
 echo "BUILDING SDL_IMAGE..."
 cd SDL_image
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-png-shared --disable-jpeg-shared
 make && make install
 cd ../
@@ -129,6 +140,7 @@ cd ../
 ## SDL_ttf
 echo "BUILDING SDL_TTF..."
 cd SDL_ttf
+chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
 make && make install
 cd ../
