@@ -131,7 +131,8 @@ cd ../
 echo "BUILDING SDL_IMAGE..."
 cd SDL_image
 chmod +x configure
-./autogen.sh --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg-shared=no \
+./autogen.sh 
+./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg-shared=no \
             --enable-png-shared=no --enable-tif-shared=no --enable-webp-shared=no
 make && make install 
 cd ../
