@@ -68,12 +68,12 @@ make && make install
 cd ../
 
 ## tiff
-echo "BUILDING TIFF"
+echo "BUILDING TIFF..."
 cd tiff-4.0.0
 chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
 make && make install
-cd../
+cd ../
 
 ## Png
 echo "BUILDING PNG..."
