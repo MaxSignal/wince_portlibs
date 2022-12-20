@@ -125,7 +125,8 @@ cd SDL_image
 chmod +x configure
 ./autogen.sh 
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg-shared=no \
-            --enable-png-shared=no --enable-tif-shared=no --enable-tif=no LIBJPEG_CFLAGS="-I$CEGCC/arm-mingw32ce/include" LIBJPEG_LIBS="$CEGCC/arm-mingw32ce/lib/libjpeg.a"
+            --enable-png-shared=no --enable-tif-shared=no --enable-tif=no LIBJPEG_CFLAGS="-I$CEGCC/arm-mingw32ce/include" \
+            LIBJPEG_LIBS="$CEGCC/arm-mingw32ce/lib/libjpeg.a" LDFLAGS="$CEGCC/arm-mingw32ce/lib/libjpeg.a"
 make && make install 
 cat Makefile
 cd ../
