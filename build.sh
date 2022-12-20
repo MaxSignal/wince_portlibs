@@ -43,14 +43,6 @@ cd jpeg-6b-src/src/jpeg-6b-src
 make && make install
 cd ../../../
 
-# ## Iconv
-# echo "BUILDING ICONV..."
-# cd libiconv-1.9.1
-# chmod +x configure
-# ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared
-# make && make install
-# cd ../
-
 ## Mad
 echo "BUILDING MAD..."
 cd libmad-0.15.1b
@@ -141,7 +133,7 @@ cd SDL_image
 chmod +x configure
 ./autogen.sh 
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg-shared=no \
-            --enable-png-shared=no --enable-tif-shared=no LIBJPEG_CFLAGS="-I$CEGCC/arm-mingw32ce/include" LIBJPEG_LIBS="$CEGCC/arm-mingw32ce/lib/libjpeg.a"
+            --enable-png-shared=no --enable-tif-shared=no --enable-tif=no LIBJPEG_CFLAGS="-I$CEGCC/arm-mingw32ce/include" LIBJPEG_LIBS="$CEGCC/arm-mingw32ce/lib/libjpeg.a"
 make && make install 
 cat Makefile
 cd ../
@@ -153,15 +145,6 @@ chmod +x configure
 ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
 make && make install
 cd ../
-
-## SDL_mpeg
-# echo "BUILDING SDL_MPEG..."
-# cd smpeg
-# chmod +x autogen.sh
-# ./autogen.sh
-# ./configure --prefix=$CEGCC/arm-mingw32ce --host=arm-mingw32ce --target=arm-mingw32ce --disable-shared --disable-sdltest --enable-jpg
-# make && make install
-# cd ../
 
 ## End
 echo "Complete!"
