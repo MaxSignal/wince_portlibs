@@ -10,7 +10,7 @@
 #
 #   make install
 
-prefix = $(CEGCC)
+prefix = $(CEGCC)/arm-mingw32ce
 BIN_PATH = $(prefix)/bin
 INCLUDE_PATH = $(prefix)/include
 LIBRARY_PATH = $(prefix)/lib
